@@ -1,0 +1,51 @@
+#!/bin/bash
+# =========================================================================
+# =========================================================================
+#
+#	debian-netsurf-packager.run
+#	  docker run command for NetSurf
+#		in a Debian 9 docker image.
+#
+# =========================================================================
+#
+# @author Jay Wheeler.
+# @version 9.5.0
+# @copyright © 2018. EarthWalk Software.
+# @license Licensed under the GNU General Public License, GPL-3.0-or-later.
+# @package debian-netsurf-packager-packager
+# @subpackage debian-netsurf-packager-packager
+#
+# =========================================================================
+#
+#	Copyright © 2018. EarthWalk Software
+#	Licensed under the GNU General Public License, GPL-3.0-or-later.
+#
+#   This file is part of ewsdocker/debian-netsurf-packager-packager.
+#
+#   ewsdocker/debian-netsurf-packager is free software: you can redistribute 
+#   it and/or modify it under the terms of the GNU General Public License 
+#   as published by the Free Software Foundation, either version 3 of the 
+#   License, or (at your option) any later version.
+#
+#   ewsdocker/debian-netsurf-packager is distributed in the hope that it will 
+#   be useful, but WITHOUT ANY WARRANTY; without even the implied warranty 
+#   of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with ewsdocker/debian-netsurf-packager.  If not, see 
+#   <http://www.gnu.org/licenses/>.
+#
+# =========================================================================
+# =========================================================================
+
+docker run -it \
+           -v /etc/localtime:/etc/localtime:ro \
+           -e DISPLAY=unix${DISPLAY} \
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
+           --mount source=pkgcache,target=/pkg-repo \
+           -v ${HOME}/workspace-debian-netsurf-packager-9.5.0:/workspace \
+           -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.0:/root \
+           --name=debian-netsurf-packager-9.5.0 \
+       ewsdocker/debian-netsurf-packager:9.5.0  
