@@ -1,30 +1,24 @@
 ## ewsdocker/debian-netsurf-packager:9.5.0  
-
 **A NetSurf Internet browser packager for Debian in a Docker image.**  
 
 ### NOTE: This software is not yet ready for testing  
-
-____  
-
 **Pre-built Docker images are available from [ewsdocker/debian-netsurf-packager](https://hub.docker.com/r/ewsdocker/debian-netsurf-packager).**  
 
 ____  
-
-**NOTE**  
+#### NOTE  
 **ewsdocker/debian-netsurf-packager** is designed to be used on a Linux system configured to support **Docker user namespaces** .  Refer to [ewsdocker Containers and Docker User Namespaces](https://github.com/ewsdocker/ewsdocker.github.io/wiki/UserNS-Overview) for an overview and information on running **ewsdocker/debian-netsurf-packager** on a system not configured for **Docker user namespaces**.
 ____  
 
 **Visit the [ewsdocker/debian-netsurf-packager Wiki](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart) for complete documentation of this docker image.**  
 ____  
 
-**Installing ewsdocker/debian-netsurf-packager**  
+#### Installing ewsdocker/debian-netsurf-packager  
 
 The following scripts will download the selected **ewsdocker/debian-netsurf-packager** image, create a container, setup and populate the directory structures, create the run-time scripts, and install the application's desktop file(s).  
 
 The _default_ values will install all directories and contents in the **docker host** user's home directory (refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping)),  
 
 ____  
-
 **ewsdocker/debian-netsurf-packager:latest**  
   
     docker run --rm \
@@ -38,7 +32,6 @@ ____
            ewsdocker/debian-netsurf-packager:latest lms-setup  
 
 ____  
-
 **ewsdocker/debian-netsurf-packager:9.5.0**  
   
     docker run --rm \
@@ -51,12 +44,10 @@ ____
            ewsdocker/debian-netsurf-packager:9.5.0 lms-setup  
 
 ____  
-  
 Refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping) for a discussion of **lms-setup** and what it does.  
 
 ____  
-
-**Running the installed scripts**
+#### Running the installed scripts  
 
 After running the above command script, and using the settings indicated, the docker host directories, mapped as shown in the above tables, will be configured as follows:
 
@@ -65,9 +56,6 @@ After running the above command script, and using the settings indicated, the do
 + the associated **debian-netsurf-packager-"version"** execution script(s) (shown below) will be found in **~/.local/bin**, and _should_ be customized with proper local volume names.  
 
 ____  
-
-**Execution scripts**  
-
 **ewsdocker/debian-netsurf-packager:latest**
   
     docker run -v /etc/localtime:/etc/localtime:ro \
@@ -81,7 +69,6 @@ ____
            ewsdocker/debian-netsurf-packager:latest  
 
 ____  
-
 **ewsdocker/debian-netsurf-packager:9.5.0**
   
     docker run -it \
@@ -99,13 +86,11 @@ ____
 Refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping) for a discussion of customizing the executable scripts..  
 
 ____  
-
-**Regarding edge**  
+#### Regarding edge  
 
 For the very brave, if an _edge_ tag is available, these instructions will download, rename and install the _edge_ version.  Good luck.  
 
 ____  
-
 **ewsdocker/debian-netsurf-packager:edge**  
 
 **edge** is the development tag for the **9.5.1** release tag.
@@ -128,7 +113,7 @@ To create and run the container, the following should work from the command-line
 
     ~/.local/bin/debian-netsurf-packager-9.5.1  
 
-or,
+or,  
 
     docker run -v /etc/localtime:/etc/localtime:ro \
            -e DISPLAY=unix${DISPLAY} \
@@ -140,8 +125,7 @@ or,
        ewsdocker/debian-netsurf-packager:9.5.1    
 
 ____  
-
-**Persistence**  
+#### Persistence  
 In order to persist the **debian-netsurf-packager** application state, a location on the docker _host_ must be provided to store the necessary information.  This can be accomplished with the following volume option in the run command:
 
     -v ${HOME}/.config/docker/debian-netsurf-packager-"version":/root  
@@ -149,7 +133,7 @@ In order to persist the **debian-netsurf-packager** application state, a locatio
 Since the information is stored in the docker _container_ **/root** directory, this statement maps the user's **~/.config/docker/debian-netsurf-packager-"version"** docker _host_ directory to the **/root** directory in the docker _container_.  
 
 ____  
-**Timestamps**  
+#### Timestamps  
 It is important to keep the time and date on docker _host_ files that have been created and/or modified by the docker _containter_ synchronized with the docker _host_'s settings. This can be accomplished as follows:
 
     -v /etc/localtime:/etc/localtime:ro  
