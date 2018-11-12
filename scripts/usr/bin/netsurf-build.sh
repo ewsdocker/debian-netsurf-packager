@@ -54,7 +54,8 @@
 # Grab a temporary env.sh
 # -----------------------
 #
-	wget https://git.netsurf-browser.org/netsurf.git/plain/docs/env.sh
+#	wget https://git.netsurf-browser.org/netsurf.git/plain/docs/env.sh
+	cp /pkg-repo/netsurf/env.sh .
 	unset HOST
 	source ./env.sh
 	ns-package-install -y

@@ -8,7 +8,7 @@
 # =========================================================================
 #
 # @author Jay Wheeler.
-# @version 9.5.0
+# @version 9.5.1
 # @copyright © 2018. EarthWalk Software.
 # @license Licensed under the GNU General Public License, GPL-3.0-or-later.
 # @package ewsdocker/debian-netsurf-packager
@@ -37,7 +37,7 @@
 #
 # =========================================================================
 # =========================================================================
-FROM ewsdocker/debian-base-gui:9.5.2
+FROM ewsdocker/debian-base-gui:9.5.6-gtk3
 
 MAINTAINER Jay Wheeler <earthwalksoftware@gmail.com>
 
@@ -45,12 +45,12 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # =========================================================================
 
-ENV LMSBUILD_VERSION="9.5.0" 
+ENV LMSBUILD_VERSION="9.5.1" 
 ENV LMSBUILD_NAME=debian-netsurf-packager 
 ENV LMSBUILD_REPO=ewsdocker 
 ENV LMSBUILD_REGISTRY="" 
 
-ENV LMSBUILD_PARENT="debian-base-gui:9.5.2"
+ENV LMSBUILD_PARENT="debian-base-gui:9.5.6-gtk3"
 ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" 
 ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf 3.8"
 
@@ -62,9 +62,6 @@ RUN apt-get -y update \
                bash-completion \
                gcc \
                libcurl3-dev \
-               libgtk-3-0 \
-               libgtk-3-bin \
-               libgtk-3-common \ 
                libgtk-3-dev \
                libjpeg-dev \
                libmozjs-24-dev \
