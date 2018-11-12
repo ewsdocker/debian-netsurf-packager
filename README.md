@@ -1,4 +1,4 @@
-## ewsdocker/debian-netsurf-packager:9.5.0  
+## ewsdocker/debian-netsurf-packager:9.5.1  
 **A NetSurf Internet browser packager for Debian in a Docker image.**  
 
 ### NOTE: This software is not yet ready for testing  
@@ -32,16 +32,16 @@ ____
            ewsdocker/debian-netsurf-packager:latest lms-setup  
 
 ____  
-**ewsdocker/debian-netsurf-packager:9.5.0**  
+**ewsdocker/debian-netsurf-packager:9.5.1**  
   
     docker run --rm \
                -v ${HOME}/bin:/userbin \
                -v ${HOME}/.local:/usrlocal \
                -e LMS_BASE="${HOME}/.local" \
                -v ${HOME}/.config/docker:/conf \
-               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.0:/root \
-               --name=debian-netsurf-packager-9.5.0 \
-           ewsdocker/debian-netsurf-packager:9.5.0 lms-setup  
+               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.1:/root \
+               --name=debian-netsurf-packager-9.5.1 \
+           ewsdocker/debian-netsurf-packager:9.5.1 lms-setup  
 
 ____  
 Refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping) for a discussion of **lms-setup** and what it does.  
@@ -69,7 +69,7 @@ ____
            ewsdocker/debian-netsurf-packager:latest  
 
 ____  
-**ewsdocker/debian-netsurf-packager:9.5.0**
+**ewsdocker/debian-netsurf-packager:9.5.1**
   
     docker run -it \
                --rm \
@@ -78,9 +78,9 @@ ____
                -v /tmp/.X11-unix:/tmp/.X11-unix \
                -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
                -v ${HOME}/source:/source \
-               -v ${HOME}/workspace-debian-netsurf-packager-9.5.0:/workspace \
-               --name=debian-netsurf-packager-9.5.0 \
-           ewsdocker/debian-netsurf-packager:9.5.0  
+               -v ${HOME}/workspace-debian-netsurf-packager-9.5.1:/workspace \
+               --name=debian-netsurf-packager-9.5.1 \
+           ewsdocker/debian-netsurf-packager:9.5.1  
 
 ____  
 Refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping) for a discussion of customizing the executable scripts..  
@@ -93,17 +93,17 @@ For the very brave, if an _edge_ tag is available, these instructions will downl
 ____  
 **ewsdocker/debian-netsurf-packager:edge**  
 
-**edge** is the development tag for the **9.5.1** release tag.
+**edge** is the development tag for the **9.5.2** release tag.
 
     docker pull ewsdocker/debian-netsurf-packager:edge
-    docker tag ewsdocker/debian-netsurf-packager:edge ewsdocker/debian-netsurf-packager:9.5.1
+    docker tag ewsdocker/debian-netsurf-packager:edge ewsdocker/debian-netsurf-packager:9.5.2
     docker run -v ${HOME}/bin:/userbin \
                -v ${HOME}/.local:/usrlocal \
                -e LMS_BASE="${HOME}/.local" \
                -v ${HOME}/.config/docker:/conf \
-               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.1:/root \
-               --name=debian-netsurf-packager-9.5.1 \
-           ewsdocker/debian-netsurf-packager:9.5.1 lms-setup  
+               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.2:/root \
+               --name=debian-netsurf-packager-9.5.2 \
+           ewsdocker/debian-netsurf-packager:9.5.2 lms-setup  
 
 optional step:
 
@@ -111,7 +111,7 @@ optional step:
 
 To create and run the container, the following should work from the command-line, 
 
-    ~/.local/bin/debian-netsurf-packager-9.5.1  
+    ~/.local/bin/debian-netsurf-packager-9.5.2  
 
 or,  
 
@@ -120,9 +120,9 @@ or,
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
            -v ${HOME}/public_html:/html-source \
-           -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.1:/root \
-           --name=debian-netsurf-packager-9.5.1 \
-       ewsdocker/debian-netsurf-packager:9.5.1    
+           -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.2:/root \
+           --name=debian-netsurf-packager-9.5.2 \
+       ewsdocker/debian-netsurf-packager:9.5.2    
 
 ____  
 #### Persistence  
