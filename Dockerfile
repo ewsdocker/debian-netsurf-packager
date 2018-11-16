@@ -45,6 +45,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # =========================================================================
 
+ENV NETSURF_VERS="3.8"
+
 ENV LMSBUILD_VERSION="9.5.2" 
 ENV LMSBUILD_NAME=debian-netsurf-packager 
 ENV LMSBUILD_REPO=ewsdocker 
@@ -52,7 +54,7 @@ ENV LMSBUILD_REGISTRY=""
 
 ENV LMSBUILD_PARENT="debian-base-gui:9.5.6-gtk3"
 ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" 
-ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf 3.8"
+ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf ${NETSURF_VERS}"
 
 # =========================================================================
 
@@ -77,7 +79,8 @@ COPY scripts/. /
 
 RUN chmod 644 /usr/local/share/applications/${LMSBUILD_NAME}-${LMSBUILD_VERSION}.desktop \
  && chmod -R +x /usr/local/bin/* \
- && chmod +x /usr/bin/netsurf-build-0.0.1.sh
+ && chmod +x /usr/bin/lms/netsurf-build-0.0.1.sh \
+ && ln -s /usr/bin/lms/netsurf-build-0.0.1.sh /usr/bin/lms-buildns
 
 # =========================================================================
 
