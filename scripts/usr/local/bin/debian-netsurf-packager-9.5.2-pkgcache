@@ -48,5 +48,7 @@ docker run -it \
            --mount source=pkgcache,target=/pkg-repo \
            -v ${HOME}/workspace-debian-netsurf-packager-9.5.2:/workspace \
            -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.2:/root \
+           -e LMSOPT_QUIET=0 \
+           -e LMSOPT_DEBUG=0 \
            --name=debian-netsurf-packager-9.5.2 \
        ewsdocker/debian-netsurf-packager:9.5.2  

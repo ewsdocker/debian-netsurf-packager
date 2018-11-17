@@ -48,6 +48,8 @@ docker run -it \
            -v ${HOME}/pkg-repo:/pkg-repo \
            -v ${HOME}/workspace-debian-netsurf-packager-latest:/workspace \
            -v ${HOME}/.config/docker/debian-netsurf-packager-latest:/root \
+           -e LMSOPT_QUIET=0 \
+           -e LMSOPT_DEBUG=0 \
            --name=debian-netsurf-packager-latest \
        ewsdocker/debian-netsurf-packager:latest  
        
