@@ -76,8 +76,8 @@ declare wsPath="${wsRoot}/dev-netsurf/workspace"
 #
 # =========================================================================
 
-lmscli_optQuiet=0
-lmscli_optDebug=1
+lmscli_optQuiet=${LMSOPT_QUIET}
+lmscli_optDebug=${LMSOPT_DEBUG}
 
 lmsconDisplay "###########################"
 lmsconDisplay "#"
@@ -90,6 +90,7 @@ lmsconDisplay_Debug "calling nsLoadScript \"${nsUrl}\" \"${nsEnv}\""
 nsLoadScript "${nsUrl}" "${nsEnv}"
 [[ $? -eq 0 ]] ||
  {
+ 	lmscli_optQuiet=0
  	lmsconDisplay "ERROR: nsLoadScript failed: nsUrl = \"${nsUrl}\", nsEnv = \"${nsEnv}\""
  	exit 1
  }
@@ -99,6 +100,7 @@ lmsconDisplay "calling nsBuildApp \"${nsEnv}\" \"${wsPath}\""
 nsBuildApp "${nsEnv}" "${wsPath}"
 [[ $? -eq 0 ]] ||
  {
+ 	lmscli_optQuiet=0
  	lmsconDisplay "ERROR: nsBuildApp failed: nsEnv = \"${nsEnv}\", ws_Path = \"${wsPath}\""
  	exit 2
  }
@@ -124,6 +126,5 @@ lmsconDisplay "#"
 lmsconDisplay "#   \"${nsArchive}\" successfully created."
 lmsconDisplay "#"
 lmsconDisplay "###########################"
-lmsconDisplay "\"${nsArchive}\" successfully created."
 
 exit 0

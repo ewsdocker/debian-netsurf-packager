@@ -77,6 +77,7 @@ function nsLoadScript()
 
 	[[ -z "${scriptUrl}" || -z "${scriptEnv}" ]] &&
 	 {
+	 	lmscli_optQuiet=0
 		lmsconDisplay "nsLoadScript ERROR: missing required parameter(s)"
 	 	return 1
 	 }
@@ -84,6 +85,7 @@ function nsLoadScript()
 	wget "${scriptUrl}"
     [[ $? -eq 0 ]] || 
      {
+     	lmscli_optQuiet=0
 		lmsconDisplay "nsLoadScript ERROR: wget failed."
      	return 2
      }
@@ -122,6 +124,7 @@ function nsBuildApp()
 	
 	[[ -z "${loaderPath}"  || -z "${ws}" ]] && 
 	 {
+	 	lmscli_optQuiet=0
 		lmsconDisplay "nsBuildApp ERROR: missing required parameter(s)"
 	 	return 1
 	 }
@@ -165,7 +168,12 @@ function nsBuildApp()
 	lmsconDisplay_Debug "make"
 
 	make
-	[[ $? -eq 0 ]] || return 2
+	[[ $? -eq 0 ]] || 
+     {
+	 	lmscli_optQuiet=0
+		lmsconDisplay "nsBuildApp ERROR: missing required parameter(s)"
+	 	return 2
+	 }
 
 	lmsconDisplay_Debug "nsBuildApp complete"
 
