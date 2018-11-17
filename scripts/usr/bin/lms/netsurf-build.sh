@@ -52,7 +52,22 @@
 #
 # =========================================================================
 
+declare nsUrl="https://git.netsurf-browser.org/netsurf.git/plain/docs/env.sh"
+declare nsRepo="/pkg-repo"
+
+declare nsArchName="netsurf-${NETSURF_VERS}-deb-gtk-x86_64.tar.gz"
+declare nsArchive="${nsRepo}/${nsArchName}"
+
+declare nsEnv="${nsRepo}/env.sh"
+
+declare wsRoot="${HOME}"
+declare wsPath="${wsRoot}/dev-netsurf/workspace"
+
+# =========================================================================
+
 . /usr/local/lib/lms/lmsconCli-0.0.2.bash
+. /usr/local/lib/lms/lmsconDisplay-0.0.2.bash
+
 . /usr/local/lib/lms/lmsBuildNS-0.0.1.sh
 
 # =========================================================================
@@ -60,19 +75,35 @@
 #
 #
 # =========================================================================
-nsLoadScript "${nsUrl}""${nsEnv}"
+
+lmscli_optQuiet=0
+lmscli_optDebug=1
+
+lmsconDisplay "###########################"
+lmsconDisplay "#"
+lmsconDisplay "#   Building NetSurf: ${nsArchive}"
+lmsconDisplay "#"
+lmsconDisplay "###########################"
+
+lmsconDisplay_Debug "calling nsLoadScript \"${nsUrl}\" \"${nsEnv}\""
+
+nsLoadScript "${nsUrl}" "${nsEnv}"
 [[ $? -eq 0 ]] ||
  {
- 	lmsconDisplay "nsLoadScript failed: nsUrl = \"${nsUrl}\", nsEnv = \"${nsEnv}""
+ 	lmsconDisplay "ERROR: nsLoadScript failed: nsUrl = \"${nsUrl}\", nsEnv = \"${nsEnv}\""
  	exit 1
  }
 
-nsBuildApp "${nsEnv}" "${wsRoot}/${ws_Path}"
+lmsconDisplay "calling nsBuildApp \"${nsEnv}\" \"${wsPath}\""
+
+nsBuildApp "${nsEnv}" "${wsPath}"
 [[ $? -eq 0 ]] ||
  {
- 	lmsconDisplay "nsBuildApp failed: nsEnv = \"${nsEnv}\", nsEnv = \"${nsEnv}""
+ 	lmsconDisplay "ERROR: nsBuildApp failed: nsEnv = \"${nsEnv}\", ws_Path = \"${wsPath}\""
  	exit 2
  }
+
+lmsconDisplay_Debug "packaging"
 
 mkdir -p usr/bin
 mkdir -p usr/share/netsurf
@@ -85,7 +116,14 @@ rm -R usr
 
 cd ~
 
+rm -Rf dev-netsurf
+rm env.*
 
-lmsconDisplay "\"${nsUrl}\" successfully created."
+lmsconDisplay "###########################"
+lmsconDisplay "#"
+lmsconDisplay "#   \"${nsArchive}\" successfully created."
+lmsconDisplay "#"
+lmsconDisplay "###########################"
+lmsconDisplay "\"${nsArchive}\" successfully created."
 
 exit 0

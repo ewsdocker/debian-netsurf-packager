@@ -54,18 +54,7 @@
 # =========================================================================
 # =========================================================================
 
-declare lmsBuildNsVer="0.0.1"
-
-declare nsURL="https://git.netsurf-browser.org/netsurf.git/plain/docs/env.sh"
-declare nsRepo="/pkg-repo"
-
-declare nsArchName="netsurf-${NETSURF_VERS}-deb-gtk-x86_64.tar.gz"
-declare nsArchive="${nsRepo}/${nsArchName}"
-
-declare nsEnv="${nsRepo}/env.sh"
-
-declare wsRoot="${HOME}"
-declare wsPath="dev-netsurf/workspace"
+declare lmsBuildNs_Ver="0.0.1"
 
 # =========================================================================
 #
@@ -81,13 +70,23 @@ declare wsPath="dev-netsurf/workspace"
 # =========================================================================
 function nsLoadScript()
 {
+	lmsconDisplay_Debug "nsLoadScript \"${1}\" \"${2}\""
+
 	local scriptUrl="${1}"
 	local scriptEnv="${2}"
 
-	[[ -z "${scriptUrl}" || -z "${scriptEnv}" ]] && return 1
+	[[ -z "${scriptUrl}" || -z "${scriptEnv}" ]] &&
+	 {
+		lmsconDisplay "nsLoadScript ERROR: missing required parameter(s)"
+	 	return 1
+	 }
 	
 	wget "${scriptUrl}"
-    [[ $? -eq 0 ]] || return 2
+    [[ $? -eq 0 ]] || 
+     {
+		lmsconDisplay "nsLoadScript ERROR: wget failed."
+     	return 2
+     }
 
     while read buffer
     do 
@@ -97,7 +96,9 @@ function nsLoadScript()
     done < ./env.sh > "${scriptEnv}"
 
 	unset HOST
-	
+
+	lmsconDisplay_Debug "nsLoadScript completed"
+
 	return 0
 }
 
@@ -114,27 +115,60 @@ function nsLoadScript()
 # =========================================================================
 function nsBuildApp()
 {
-	local loaderPath="${1}"
-	[[ -z "${loaderPath}" ]] && return 1
+	lmsconDisplay_Debug "nsBuildApp = \"${1}\" \"${2}\""
 
+	local loaderPath="${1}"
 	local ws="${2}"
 	
+	[[ -z "${loaderPath}"  || -z "${ws}" ]] && 
+	 {
+		lmsconDisplay "nsBuildApp ERROR: missing required parameter(s)"
+	 	return 1
+	 }
+
+	lmsconDisplay_Debug "source loaderPath"
+
 	source "${loaderPath}"
 
+	lmsconDisplay_Debug "calling ns-package-install"
+
 	ns-package-install -y
+
+	lmsconDisplay_Debug "source env.sh"
+
 	source ./env.sh
 
+	lmsconDisplay_Debug "calling source ns-clone"
+
 	ns-clone
+
+	lmsconDisplay_Debug "calling ns-pull-install"
+
 	ns-pull-install
+
+	lmsconDisplay_Debug "remove env.sh, PWD = $PWD"
 
 	rm ./env.sh
 
+	lmsconDisplay_Debug "nsBuildApp: cd = ${ws}, PWD = $PWD"
+
 	cd "${ws}"
+
+	lmsconDisplay_Debug "source env.sh"
+
 	source ./env.sh
 
+	lmsconDisplay_Debug "cd netsurf, PWD = $PWD"
+
  	cd netsurf
+
+	lmsconDisplay_Debug "make"
+
 	make
-	
+	[[ $? -eq 0 ]] || return 2
+
+	lmsconDisplay_Debug "nsBuildApp complete"
+
 	return $?
 }
 

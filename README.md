@@ -97,7 +97,8 @@ ____
 
     docker pull ewsdocker/debian-netsurf-packager:edge
     docker tag ewsdocker/debian-netsurf-packager:edge ewsdocker/debian-netsurf-packager:9.5.2
-    docker run -v ${HOME}/bin:/userbin \
+    docker run --rm \
+               -v ${HOME}/bin:/userbin \
                -v ${HOME}/.local:/usrlocal \
                -e LMS_BASE="${HOME}/.local" \
                -v ${HOME}/.config/docker:/conf \

@@ -40,6 +40,7 @@
 # =========================================================================
 
 docker run -it \
+           --rm \
            -v /etc/localtime:/etc/localtime:ro \
            -e DISPLAY=unix${DISPLAY} \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
