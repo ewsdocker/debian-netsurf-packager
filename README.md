@@ -1,7 +1,6 @@
 ## ewsdocker/debian-netsurf-packager:9.5.2  
 **A NetSurf Internet browser packager for Debian in a Docker image.**  
 
-### NOTE: This software is not yet ready for testing  
 **Pre-built Docker images are available from [ewsdocker/debian-netsurf-packager](https://hub.docker.com/r/ewsdocker/debian-netsurf-packager).**  
 
 ____  
