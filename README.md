@@ -57,13 +57,17 @@ After running the above command script, and using the settings indicated, the do
 ____  
 **ewsdocker/debian-netsurf-packager:latest**
   
-    docker run -v /etc/localtime:/etc/localtime:ro \
+    docker run -it \
+               --rm \
+               -v /etc/localtime:/etc/localtime:ro \
                -e DISPLAY=unix${DISPLAY} \
                -v /tmp/.X11-unix:/tmp/.X11-unix \
                -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
-               -v ${HOME}/source:/source \
+               -v ${HOME}/pkg-repo:/pkg-repo \
+               -v ${HOME}/workspace-debian-netsurf-packager-latest:/workspace \
                -v ${HOME}/.config/docker/debian-netsurf-packager-latest:/root \
-               -v ${HOME}/workspace-debian-netsurf-latest:/workspace \
+               -e LMSOPT_QUIET=0 \
+               -e LMSOPT_DEBUG=0 \
                --name=debian-netsurf-packager-latest \
            ewsdocker/debian-netsurf-packager:latest  
 
@@ -76,8 +80,11 @@ ____
                -e DISPLAY=unix${DISPLAY} \
                -v /tmp/.X11-unix:/tmp/.X11-unix \
                -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
-               -v ${HOME}/source:/source \
+               -v ${HOME}/pkg-repo:/pkg-repo \
                -v ${HOME}/workspace-debian-netsurf-packager-9.5.2:/workspace \
+               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.2:/root \
+               -e LMSOPT_QUIET=0 \
+               -e LMSOPT_DEBUG=0 \
                --name=debian-netsurf-packager-9.5.2 \
            ewsdocker/debian-netsurf-packager:9.5.2  
 
