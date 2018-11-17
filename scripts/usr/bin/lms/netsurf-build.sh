@@ -55,7 +55,7 @@
 declare nsUrl="https://git.netsurf-browser.org/netsurf.git/plain/docs/env.sh"
 declare nsRepo="/pkg-repo"
 
-declare nsArchName="netsurf-${NETSURF_VERS}-deb-gtk-x86_64.tar.gz"
+declare nsArchName="netsurf-${NETSURF_VERS}-${NETSURF_BUILD}-deb-gtk-x86_64.tar.gz"
 declare nsArchive="${nsRepo}/${nsArchName}"
 
 declare nsEnv="${nsRepo}/env.sh"

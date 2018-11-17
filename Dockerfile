@@ -46,19 +46,19 @@ ENV DEBIAN_FRONTEND noninteractive
 # =========================================================================
 
 ENV NETSURF_VERS="3.8"
+ENV NETSURF_BUILD=0
 
 # =========================================================================
 
 ENV LMSBUILD_VERSION="9.5.2" 
+
 ENV LMSBUILD_NAME=debian-netsurf-packager 
 ENV LMSBUILD_REPO=ewsdocker 
 ENV LMSBUILD_REGISTRY="" 
 
-# =========================================================================
-
 ENV LMSBUILD_PARENT="debian-base-gui:9.5.6-gtk2"
 ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" 
-ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf ${NETSURF_VERS}"
+ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf ${NETSURF_VERS}, Build ${NETSURF_BUILD}"
 
 # =========================================================================
 
