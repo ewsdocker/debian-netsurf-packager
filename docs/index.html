@@ -1,0 +1,1222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>ewsdocker/debian-netsurf Docker Container</title>
+    <meta name="author" content="Jay" />
+    <meta http-equiv="Content-Type" 
+          content="text/html; charset=iso-8859-1" />
+    <meta name="description" 
+	  content="NetSurf Internet Browser Packager, Docker Container, Open Source Software (OSS), freeware" />
+    <meta name="keywords" 
+	  content="netsurf browser internet packager tar tarball web world-wide open source software docker container image freeware ewsdocker earthwalk linux debian github git" />
+
+    <style>
+    <!-- ------------------- -->
+    <!--        body         -->
+    <!-- ------------------- -->
+      #body 
+      {
+       margin-top: 0px;
+       margin-left: 0px;
+       margin-right: 0px;
+       margin-bottom: 0px;
+      }
+	    
+      .body 
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 11px;
+       font-weight: bold;
+       text-decoration:none;
+       color: #000099;
+      }
+	    
+      .body a
+      {
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .body a:visited
+      {
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .body a:hover
+      {
+       color: inherit;
+       text-decoration:underline;
+       color:inherit;
+      }
+	    
+    </style>
+
+    <!-- ------------------------- -->
+    <!--       page header         -->
+    <!-- ------------------------- -->
+    <style>
+
+      #header
+      {
+       width: 800px;
+       position:relative; 
+       height: 162px;
+       background-image:url(./images/header.jpg);
+       background-repeat:no-repeat;
+      }
+
+      #headerDocker 
+      {
+       position:absolute;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       color: #FFFFFF;
+       font-size:30px;
+       font-weight:bold;
+       margin-top:25px;
+       margin-left:430px;
+       left: 0px;
+       top: 0px;
+      }
+
+      #headerDocker a
+      {
+       color: #000099;
+       text-decoration: none;
+      }
+
+      #headerDocker a:visited
+      {
+       color: #000099;
+       text-decoration: none;
+      }
+
+      #headerDocker a:hover
+      {
+       color: #000099;
+       text-decoration: underline;
+      }
+
+      #headerDockerOSS 
+      {
+       position:absolute;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       color: #FFFFFF;
+       font-size: 21px;
+       font-weight: bold;
+       margin-top:60px;
+       margin-left:360px;
+       left: 0px;
+       top: 0px;
+      }
+
+      #headerCompany 
+      {
+       position:absolute;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       color: #FFFFFF;
+       font-size: 20px;
+       font-weight: bold;
+       margin-top:10px;
+       margin-left:20px;
+       left: 0px;
+       top: 0px;
+      }
+
+      #headerCompanySm 
+      {
+       position:absolute;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       color: #FFFFFF;
+       font-size: 14px;
+       font-weight: bold;
+       margin-top:35px;
+       margin-left:45px;
+       left: 0px;
+       top: 0px;
+      }
+
+      #headerMenu
+      {
+       position:absolute;
+       bottom: 20px;
+       right: 30px;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 10px;
+       font-weight: normal;
+       color: #000099;
+      }
+
+      #headerMenu a
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 10px;
+       font-weight: bold;
+       color:#000099;
+       text-decoration:none;
+      }
+
+      #headerMenu a:hover
+      {
+       color:#7DA5E0;
+       text-decoration:none;
+      }
+
+    </style>
+
+    <!-- ------------------- -->
+    <!--      leftpanel      -->
+    <!-- ------------------- -->
+    <style>
+
+      #leftpanel
+      {
+       float:left;
+       width:200px;
+      }
+
+      .leftMenuTop
+      {
+       width: 204px; 
+       height: 27px;
+       background-image:url(./images/table_top.jpg);
+       background-repeat:no-repeat;
+      }
+
+      .leftMenuTop a
+      {
+       color: inherit;
+       text-decoration:none;
+      }
+
+      .leftMenuTop a:visited
+      {
+       color: inherit;
+       text-decoration:none;
+      }
+
+      .leftMenuBottom
+      {
+       width: 204px; 
+       height: 23px;
+      }
+
+      .leftMenuPanel 
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 14px;
+       font-weight: bold;
+       color: inherit;
+      }
+
+      .leftMenuPanel a
+      {
+       color: inherit;
+       text-decoration:none;
+      }
+
+      .leftMenuPanel a:visited
+      {
+       color: inherit;
+       text-decoration:none;
+      }
+
+      .leftMenuContent
+      {
+       width: 204px;
+       background-image:url(./images/table_content.jpg);
+       background-repeat:repeat-y;
+      }
+
+      .leftTitle
+      {
+       margin-left:15px;
+       margin-right:15px;
+       text-align:center;
+       text-decoration:underline;
+       font-size: 12px;
+       font-weight: bold;
+      }
+
+      .leftTitle.left
+      {
+       margin-left:15px;
+       margin-right:15px;
+       text-align:left;
+       text-decoration:underline;
+       font-size: 12px;
+       font-weight: bold;
+      }
+
+      .leftSubTitle
+      {
+       margin-left:18px;
+       margin-right:18px;
+       text-align:center;
+       text-decoration:underline;
+       font-size: 12px;
+       font-weight: bold;
+      }
+
+      .leftSubTitle.left
+      {
+       margin-left:18px;
+       margin-right:18px;
+       text-align:left;
+       text-decoration:underline;
+       font-size: 12px;
+       font-weight: bold;
+      }
+
+      .leftMenuText
+      {
+       margin-left:15px;
+       margin-right:15px;
+       text-align:left;
+       font-size: 12px;
+       font-weight:bold;
+      }
+
+      .leftMenuText.indent
+      {
+       margin-left:18px;
+       margin-right:18px;
+      }
+
+      .leftMenuText a
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 12px;
+       font-weight: normal;
+       text-decoration:none;
+       color:inherit;
+      }
+
+      .leftMenuText a:hover
+      {
+       font-weight: normal;
+       font-size: 12px;
+       text-decoration:underline;
+       color:inherit;
+      }
+
+      .leftMenuText a:visited
+      {
+       text-decoration:none;
+       color:inherit;
+      }
+
+    </style>
+
+    <!-- ------------------- -->
+    <!--      content        -->
+    <!-- ------------------- -->
+    <style>
+
+        #content
+        {
+         width: 800px;
+        }
+
+        #contentText
+        {
+         float:right;
+         width: 580px;
+        }
+
+    </style>
+
+    <!-- ------------------- -->
+    <!--        title        -->
+    <!-- ------------------- -->
+    <style>
+	    
+      .title
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif; 
+       font-weight: bold; 
+       font-size: 26px; 
+       color: #7DA5E0; 
+      }
+	    
+    </style>
+
+    <!-- ----------------------- -->
+    <!--       subtitle          -->
+    <!-- ----------------------- -->
+    <style>
+	    
+      .subtitle
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size:18px;
+       font-weight: bold;
+       text-decoration:none;
+      }
+
+      .subtitle a
+      {
+       text-decoration:none;
+       color: #CCCCCC;
+      }
+
+      .subtitle a:hover
+      {
+       text-decoration:underline;
+       color:#000099;
+      }
+	    
+    </style>
+
+    <!-- ----------------------- -->
+    <!--   Construction Banner   -->
+    <!-- ----------------------- -->
+    <style>
+
+      #construction
+      {
+       align:center;
+       padding: 15px;
+       padding-top: 20px;
+       font-weight: bold;
+       font-size: 14px;
+       font-family: Verdana, Arial, sans-serif;
+      }
+
+      .construction
+      {
+       position:relative; 
+       align:center;
+      }
+
+    </style>
+
+    <!-- ------------------- -->
+    <!--      li             -->
+    <!-- ------------------- -->
+    <style>
+	    
+      li.disc
+      {
+       list-style-type: disc;
+      }
+
+      li.indent
+      {
+       list-style-type: none;
+      }
+
+      li.indent2
+      {
+       list-style-type: none;
+       margin-left: 24px;
+      }
+
+      li.numbers
+      {
+       list-style-type: decimal;
+      }
+
+    </style>
+
+    <!-- ------------------- -->
+    <!--      table          -->
+    <!-- ------------------- -->
+    <style>
+	    
+      table.center 
+      {
+       margin-left:auto; 
+       margin-right:auto;
+      }
+
+    </style>
+
+    <!-- ------------------- -->
+    <!--      footer         -->
+    <!-- ------------------- -->
+    <style>  
+	    
+      .footer
+      {
+       width: 779px;
+       height: 32px;
+       background-image:url(./images/bg_footer.gif);
+       background-repeat:no-repeat;
+       clear:both;
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 9px;
+       font-weight: bold;
+       color:#FFFFFF;
+      }
+	    
+      .footer a
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 9px;
+       font-weight: bold;
+       color:#000099;
+       text-decoration:none;
+      }
+	    
+      .footer a:hover
+      {
+       color:#FFFFFF;
+       text-decoration:none;
+      }
+
+      .footerblock
+      {
+       position: relative;
+       top: 4px;
+      }
+
+      .copyright
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 8px;
+       font-weight: bold;
+       color:#ffffff;
+      }
+	    
+    </style>
+
+    <!-- ------------------- -->
+    <!--       block         -->
+    <!-- ------------------- -->
+    <style>
+	    
+      .undecorated
+      {
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .undecorated a
+      {
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .undecorated a:visited
+      {
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .undecorated a:hover
+      {
+       font-weight:bold;
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+    </style>
+
+    <!-- ------------------- -->
+    <!--       block         -->
+    <!-- ------------------- -->
+    <style>
+	    
+      .block
+      {
+       padding: 15px;
+       padding-top: 20px;
+       font-weight: normal;
+       font-size: 14px;
+       font-family: Verdana, Arial, sans-serif;
+      }
+	    
+      .block a
+      {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 14px;
+       font-weight: bold;
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .block a:hover
+      {
+       font-size: 14px;
+       text-decoration:none;
+       color:inherit;
+      }
+	    
+      .blockHighlight
+      {
+       font-weight: bold;
+       font-size: 14px;
+      }
+
+      .blockNotice
+      {
+       padding: 20px;
+       font-family: Verdana, Arial, sans-serif;
+       border-style: solid;
+       border-width: 2px;
+      }
+	    
+      #blockCentered
+      {
+       text-align:center;
+      }
+	    
+      .blockCentered a
+      {
+       color:inherit;
+       font-weight: bold;
+       text-decoration:none;
+      }
+	    
+      .blockCentered a:visited
+      {
+       color:inherit;
+       font-weight: bold;
+       text-decoration:none;
+      }
+	    
+      .blockCentered a:hover
+      {
+       color:inherit;
+       font-weight: bold;
+       text-decoration:underlined;
+      }
+	    
+    </style>
+
+    <!-- ---------- -->
+    <!--    block   -->
+    <!-- ---------- -->
+    <style>
+	    
+       .border
+      {
+       border-style: solid;
+       border-width: 1px;
+       border-color: #000000;
+      }
+
+      .background
+      {
+       background-color: #FFFFFF;
+      }
+
+    </style>
+
+    <!-- ---------------- -->
+    <!--    blockColors   -->
+    <!-- ---------------- -->
+    <style>
+	    
+      .gray
+      {
+       color:#CCCCCC;
+      }
+
+      .green
+      {
+       color:#008700;
+      }
+
+      .darkGreen
+      {
+       color: #037D31;
+      }
+
+      .blue
+      {
+       color: #000099;
+      }
+
+      .darkBlue
+      {
+       color:#001DFB;
+      }
+
+      .dockerBlue
+      {
+       color:#2089C4;
+      }
+
+      .githubBlue
+      {
+       color:#0366D6;
+      }
+
+      .phpBlue
+      {
+       color:#6082BB;
+      }
+
+      .ewsBlue
+      {
+       color: #7DA5E0; 
+      }
+
+      .orange
+      {
+       color: #F97237;
+      }
+
+      .black
+      {
+       color:#000000;
+      }
+
+      .red
+      {
+       color:#DC0000;
+      }
+
+    </style>
+
+    <!-- ----------------- -->
+    <!--    blockBorders   -->
+    <!-- ----------------- -->
+    <style>
+	    
+      .green.border
+      {
+       border-color: #008700;
+      }
+
+      .blue.border
+      {
+       border-color: #000099;
+      }
+
+      .darkBlue.border
+      {
+       border-color: #001DFB;
+      }
+
+      .orange.border
+      {
+       border-color: #F97237;
+      }
+
+      .black.border
+      {
+       border-color: #000000;
+      }
+
+      .red.border
+      {
+       border-color: #DC0000;
+      }
+
+      .burgandy
+      {
+       color:#740000;
+      }
+
+      .burgandy.border
+      {
+       border-color: #740000;
+      }
+
+    </style>
+
+    <!-- --------------------- -->
+    <!--    blockBackgrounds   -->
+    <!-- --------------------- -->
+    <style>
+      .green.border.background
+      {
+       background-color: #ECFDF1;
+      }
+
+     .blue.border.background
+      {
+       background-color: #E6EFFC;
+      }
+
+     .darkBlue.border.background
+      {
+       background-color: #D8DBF1;
+      }
+
+     .orange.border.background
+      {
+       background-color:#F9DFD3;
+      }
+	    
+     .black.border.background
+      {
+       background-color:#CCCCCC;
+      }    
+
+      .red.border.background
+      {
+       background-color: #FFF3F5;
+      }
+	    
+      .burgandy.border.background
+      {
+       background-color:#FEF8FA;
+      }
+
+    </style>
+
+    <!--  ------------------------ -->
+    <!--                           -->
+    <!--  Table of Contents Layout -->
+    <!--                           -->
+    <!--  ------------------------ -->
+    <style>
+     #toc_container 
+     {
+      display: table;
+      padding: 10px;
+      font-size: 14px;
+      font-weight:normal;
+     }
+
+    .toc_title 
+    {
+     font-weight: 700;
+     text-align: center;
+    }
+
+    #toc_container li, #toc_container ul, #toc_container ul li
+    {
+     list-style: outside none none !important;
+    }
+   </style>
+
+  </head>
+  <body>
+
+<!-- ------------------------ -->
+<!--     The whole page       -->
+<!-- ------------------------ -->
+    <div id="body" align="center">
+
+    <!-- ---------------- -->
+    <!--     Header       -->
+    <!-- ---------------- -->
+      <div id="header">
+
+        <div id="headerCompany" align="left"><span class="githubBlue">EarthWalk Software</span></div>
+        <div id="headerCompanySm" align="left"><span class="githubBlue">and Consulting</span></div>
+
+        <div id="headerDocker" align="left" class="blue">
+          <a href="https://github.com/ewsdocker/ewsdocker.github.io/wiki">ewsdocker</a>
+        </div>
+        <div id="headerDockerOSS" align="left"><span class="blue">Open Source Docker Containers</span></div>
+
+        <div id="headerMenu" align="right"><a 
+	         href="http://www.netsurf-browser.org/">NetSurf</a> | <a 
+	         href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager">Docker Image</a> | <a 
+             href="https://github.com/ewsdocker/debian-netsurf-packager">Git Source</a> | <a 
+             href="https://github.com/ewsdocker/debian-netsurf-packager/wiki">Wiki</a>
+        </div>
+
+      </div>
+    <!-- --------------- -->
+    <!--    EndHeader    -->
+    <!-- --------------- -->
+
+    <br />
+
+    <!-- ---------------- -->
+    <!--     Content      -->
+    <!-- ---------------- -->
+      <div id="content">
+
+      <!-- ------------------- -->
+      <!--    Left Panel       -->
+      <!-- ------------------- -->
+        <div id="leftpanel">
+
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+        <!--     debian-netsurf    -->
+        <!-- --------------------- -->
+          <div class="leftMenuTop">
+            <span class="leftMenuPanel darkBlue"><a 
+                  href="https://github.com/ewsdocker/debian-netsurf-packager/wiki">Wiki</a></span>
+          </div>
+
+          <div class="leftMenuContent">
+            <div class="leftMenuText darkBlue">
+              <br />
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki">Home</a><br />
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart">Quick Start</a><br />
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/CommandLineInterface">Command-line Interface</a><br />
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/DockerTags">Docker Tags</a><br />
+            </div>
+          </div>
+
+          <div class="leftMenuBottom darkBlue">
+            <img src="./images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+          </div> 
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+
+              <br />
+
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+        <!-- Additional Resources  -->
+        <!-- --------------------- -->
+          <div class="leftMenuTop">
+            <span class="leftMenuPanel darkBlue">Resources</span>
+          </div>
+
+          <div class="leftMenuContent darkBlue">
+
+            <div class="leftMenuText">
+
+              <br />
+
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager">NetSurf Packager</a><br />
+              <br />
+              <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager">Docker Image</a><br />
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager">GitHub Source</a><br />
+              <br />
+              <a href="https://github.com/ewsdocker/debian-netsurf">debian-netsurf</a><br />
+              <br />
+              <a href="https://github.com/ewsdocker/debian-kaptain">debian-kaptain</a><br />
+              <a href="https://github.com/ewsdocker/debian-base-gui">debian-base-gui</a><br />
+              <a href="https://github.com/ewsdocker/debian-base">debian-base</a><br />
+            </div>
+          </div>
+
+          <div class="leftMenuBottom darkBlue">
+            <img src="./images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+          </div> 
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+
+          <br />
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+        <!--     Licenses          -->
+        <!-- --------------------- -->
+          <div class="leftMenuTop">
+            <span class="leftMenuPanel darkBlue">Licenses</span>
+          </div>
+
+          <div class="leftMenuContent">
+            <div class="leftMenuText darkBlue">
+              <br />
+              <a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/License">debian-netsurf-packager</a><br />
+              <a href="http://www.netsurf-browser.org/about/licence.html">NetSurf</a>
+            </div>
+          </div>
+
+          <div class="leftMenuBottom darkBlue">
+            <img src="./images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+          </div> 
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+
+              <br />
+
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+        <!--     Repositories       -->
+        <!-- --------------------- -->
+          <div class="leftMenuTop">
+            <span class="leftMenuPanel darkBlue">Repositories</span>
+          </div>
+
+          <div class="leftMenuContent">
+            <div class="leftMenuText darkBlue">
+              <br />
+              <a class="black" href="https://hub.docker.com/r/ewsdocker/">Docker Hub</a><br />
+              <a class="black" href="https://github.com/ewsdocker?tab=repositories">GitHub</a><br />
+              <a class="black" href="https://github.com/ewsdocker/ewsdocker.github.io/wiki">ewsdocker Wiki</a><br />
+            </div>
+
+          </div>
+
+          <div class="leftMenuBottom darkBlue">
+            <img src="./images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+          </div> 
+        <!-- --------------------- -->
+        <!--    Left Panel Menu    -->
+        <!-- --------------------- -->
+
+          <br />
+
+          <p>
+            &nbsp;
+          </p>
+        </div>
+        <!-- ---------------- -->
+        <!--    Left Panel    -->
+        <!-- ---------------- -->
+
+           <br />
+
+      <!-- -------------------- -->
+      <!--    contentText       -->
+      <!-- -------------------- -->
+        <div id="contentText">
+          <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/"><img 
+             src="./images/packager64.png" 
+             style="vertical-align:middle;border-style:none" /></a><br />
+          <span class="title blue">debian-netsurf-packager</span>
+          <br />
+          <span class="subtitle gray">Hosted by <a href="http://github.com">GitHub</a></span>
+
+          <br />
+          <br />
+
+        <!-- ---------------- -->
+        <!--  construction    -->
+        <!-- ---------------- 
+          <div id="construction">
+            <div class=".construction"><img src="./images/construction.gif" style="width=144px;height=50px;" /></div>
+            <span class="red">Under Construction</span>
+	      </div>
+        <!-- ---------------- -->
+        <!--  construction    -->
+        <!-- ---------------- -->
+
+        <!-- ------------- -->
+        <!--    bodyText   -->
+        <!-- ------------- -->
+          <div class="gray body" style="text-align:justify;">
+
+            <div class="darkBlue border block" id="blockCentered" class="undecorated" 
+               style="font-size:14px;font-weight:normal;text-decoration:none;background-color:#FFFFFF;">
+              <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/">NetSurf Packager</a><br />
+                <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/"><img 
+                         src="./images/packager64.png" 
+                         style="vertical-align:middle;border-style:none;width: 32px;height: 32px;" /></a><br />
+              New <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/">debian-netsurf-packager</a> Version <b>9.5.2</b><br />
+              <span style="font-weight:bold;font-size:12px;">November 17, 2018</span>.
+            </div>
+
+            <p>&nbsp;</p>
+
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+            <div class="darkBlue border block" style="background-color:#FFFFFF;">
+
+              <div id="blockCentered">
+                <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/"><img 
+                         src="./images/packager64.png" 
+                         style="vertical-align:middle;border-style:none;width: 32px;height: 32px;" /></a>&nbsp;&nbsp;
+                <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/" 
+                   class="undecorated" 
+                   style="font-size:16px;font-weight:bold;text-decoration:none;">debian-netsurf-packager</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+	          </div>
+
+              <p>
+                <b>debian-netsurf</b> is a <i><b>Docker container</b></i> wrapper around an 
+                unmodified <a href="http://www.netsurf-browser.org/">NetSurf</a> web browser.  
+              </p>
+              
+              <p>
+                <a href="http://www.netsurf-browser.org/">NetSurf</a> is HTML 4.01 and 
+                CSS 2 compliant, is a multi-platform design with support for RISC-OS, MacOSX, 
+                and Unix/Linux (using GTK), and has a very small footprint. All of which 
+                makes it perfect for use in embedded hardware and software applications.  
+	          </p>
+	          
+	          <p>
+	            According to the web site, 
+	            <ul>
+                  <a href="http://www.netsurf-browser.org/">NetSurf</a> is a free, open 
+                  source web browser. It is written in C and released under the GNU Public 
+                  Licence [sic] version 2.  <a href="http://www.netsurf-browser.org/">NetSurf</a> 
+                  has its own layout and rendering engine entirely written from scratch. 
+                  It is small and capable of handling many of the web standards in use 
+                  today..." <br />
+	              <br />
+	              "Originally written for computer hardware normally found in PDAs, 
+                  cable TV boxes, mobile phones and other hand-held gadgets, 
+                  <a href="http://www.netsurf-browser.org/">NetSurf</a> is compact 
+                  and low maintenance by design."<br />
+				</ul>
+	          </p>
+
+            </div>
+
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+
+	        <p style="text-align: center;">&nbsp;</p>
+
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+            <div class="darkBlue border block">
+
+              <div id="toc_container">
+                <p class="toc_title">debian-netsurf-packager Wiki Contents</p>
+                <ul class="toc_list">
+
+                  <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki">1 debian-netsurf</a></li>
+                  <br />
+
+                  <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart">2 Quick Start</a></li>
+                  <br />
+                    <ul>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#installing">2.1 Installing debian-netsurf</a></li>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#running">2.2 Running the installed scripts</a></li>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping">2.3 Mapping docker host resources to the container</a></li>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#persistence">2.4 Persistence</a></li>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#timestamps">2.5 Timestamps</a></li>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#about">2.6 About the X11 Server / GUI Stack</a></li>
+                    </ul></li>
+                  <br />
+
+                  <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/CommandLineInterface">3 Command-line Interface</a></li>
+                  <br />
+                    <ul>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/CommandLineInterface#persisting">3.1 Persisting Container Modifications</a></li>
+                    </ul></li>
+                  <br />
+
+                  <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/DockerTags">4 Docker Tags</a></li>
+                  <br />
+                    <ul>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/DockerTags#history">4.1 Docker Tag History</a></li>
+                    </ul></li>
+                  <br />
+
+                  <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/License">5 Licenses</a></li>
+                  <br />
+                    <ul>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager/wiki/License">5.1 debian-netsurf-packager</a></li>
+                      <li><a href="http://www.netsurf-browser.org/about/licence.html">5.2 NetSurf</a></li>
+                    </ul></li>
+                  <br />
+
+                  <li><a href="#">6 Resources</a></li>
+                  <br />
+                    <ul>
+                      <li><a href="https://github.com/ewsdocker/debian-netsurf-packager">6.1 debian-netsurf-packager Source on GitHub</a></li>
+                      <li><a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager">6.2 debian-netsurf-packager Image on Docker Hub</a></li>
+                      <li><a href="http://www.netsurf-browser.org">6.3 NetSurf</a></li>
+                    </ul></li>
+                  <br />
+
+                  <li><a href="#">7 Referenced Projects</a></li>
+                  <br />
+                    <ul>
+                      <li><a href="https://hub.docker.com/r/ewsdocker/debian-kaptain/wiki">7.1 debian-kaptain Wiki</a></li>
+                      <li><a href="https://hub.docker.com/r/ewsdocker/debian-base-gui/wiki">7.2 debian-base-gui Wiki</a></li>
+                      <li><a href="https://hub.docker.com/r/ewsdocker/debian-base/wiki">7.3 debian-base Wiki</a></li>
+                    </ul></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+
+	        <p style="text-align: center;"><img src="./images/Colorbar-560.gif" /></p>
+			<br />
+
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+            <div class="darkBlue border block">
+
+             <div id="blockCentered">
+ 	            <span style="font-size:16px; font-weight:bold;">Related Project:</span> &nbsp; 
+ 	                  <a href="https://github.com/ewsdocker/debian-netsurf"><span 
+ 	                     style="font-weight:bold;text-decoration:none;color:inherit;">debian-netsurf</span></a><br />
+            	<br />
+                <a href="https://hub.docker.com/r/ewsdocker/debian-netsurf-packager/"><img 
+                         src="./images/NetSurfIcon1.png" 
+                         style="vertical-align:middle;border-style:none;width: 32px;height: 32px;" /></a><br />
+            	<br />
+            	The <a href="http://www.netsurf-browser.org/">NetSurf</a> Internet browser in a 
+            	<b>Docker</b> container.
+	          </p>
+
+            </div>
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+
+	        <p style="text-align: center;"><img src="./images/Colorbar-560.gif" /></p>
+			<br />
+
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+            <div class="green border block">
+
+              <div id="blockCentered">
+ 	            <span style="font-size:16px; font-weight:bold;">Featured Project:</span> &nbsp; 
+ 	                  <a href="https://ewsdocker.github.io/alpine-nginx"><span 
+ 	                     style="font-weight:bold;text-decoration:none;color:inherit;">alpine-nginx</span></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+	          </div>
+
+	          <p>
+            	The <b>alpine-nginx</b> docker server image is based on the latest 
+            	<i>NGINX</i> mainline (<b>edge</b>) version in an  <i>Alpine Linux</i>
+            	<b>edge</b> docker image.
+	          </p>
+
+            </div>
+            <!-- --------------------- -->
+            <!--      block            -->
+            <!-- --------------------- -->
+
+          </div>
+        <!-- ------------- -->
+        <!--    bodyText   -->
+        <!-- ------------- -->
+
+	      <p>&nbsp;</p>
+
+        </div>
+      <!-- ----------------- -->
+      <!--    contentText    -->
+      <!-- ----------------- -->
+
+        <br />
+        <br />
+
+      <!-- ------------ -->
+      <!--    Footer    -->
+      <!-- ------------ -->
+        <div class="footer">
+          <div class="footerblock">
+            <a href="http://www.netsurf-browser.org/">NetSurf</a> | <a
+               href="https://hub.docker.com/r/ewsdocker/debian-netsurf">Docker Image</a> | <a 
+               href="https://github.com/ewsdocker/debian-netsurf">Git Source</a> | <a 
+               href="https://github.com/ewsdocker/debian-netsurf-packager/wiki">Wiki</a>
+            <br />
+            <div class="footerCopyright">Copyright © 2018. EarthWalk Software.</div>
+          </div>
+        </div> 
+      <!-- ------------ -->
+      <!--    Footer    -->
+      <!-- ------------ -->
+
+      </div>
+      <!-- ------------- -->
+      <!--    content    -->
+      <!-- ------------- -->
+
+    </div>
+  <!-- ------------------------ -->
+  <!--     The whole page       -->
+  <!-- ------------------------ -->
+
+  </body>
+
+</html>
