@@ -56,9 +56,9 @@ ENV LMSBUILD_NAME=debian-netsurf-packager
 ENV LMSBUILD_REPO=ewsdocker 
 ENV LMSBUILD_REGISTRY="" 
 
-ENV LMSBUILD_PARENT="debian-base:9.5.4"
+ENV LMSBUILD_PARENT="debian-base:9.5.6"
 ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" 
-ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf ${NETSURF_VERS}, Build ${NETSURF_BUILD}"
+ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf ${NETSURF_VERS}, Build #${NETSURF_BUILD}"
 
 # =========================================================================
 
@@ -87,8 +87,7 @@ RUN apt-get -y update \
 
 COPY scripts/. /
 
-RUN chmod 644 /usr/local/share/applications/${LMSBUILD_NAME}-${LMSBUILD_VERSION}.desktop \
- && chmod -R +x /usr/local/bin/* \
+RUN chmod -R +x /usr/local/bin/* \
  && chmod +x /usr/bin/lms/netsurf-build.sh \
  && ln -s /usr/bin/lms/netsurf-build.sh /usr/bin/lms-buildns
 
