@@ -171,12 +171,12 @@ function nsBuildApp()
 	[[ $? -eq 0 ]] || 
      {
 	 	lmscli_optQuiet=0
-		lmsconDisplay "nsBuildApp ERROR: missing required parameter(s)"
+		lmsconDisplay "nsBuildApp ERROR: make failed."
 	 	return 2
 	 }
 
 	lmsconDisplay_Debug "nsBuildApp complete"
 
-	return $?
+	return 0
 }
 

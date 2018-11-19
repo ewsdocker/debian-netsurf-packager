@@ -78,6 +78,7 @@ declare wsPath="${wsRoot}/dev-netsurf/workspace"
 
 lmscli_optQuiet=${LMSOPT_QUIET}
 lmscli_optDebug=${LMSOPT_DEBUG}
+lmscli_optRemove=${LMSOPT_REMOVE}
 
 lmsconDisplay "###########################"
 lmsconDisplay "#"
@@ -95,7 +96,7 @@ nsLoadScript "${nsUrl}" "${nsEnv}"
  	exit 1
  }
 
-lmsconDisplay "calling nsBuildApp \"${nsEnv}\" \"${wsPath}\""
+lmsconDisplay_Debug "calling nsBuildApp \"${nsEnv}\" \"${wsPath}\""
 
 nsBuildApp "${nsEnv}" "${wsPath}"
 [[ $? -eq 0 ]] ||
@@ -118,8 +119,11 @@ rm -R usr
 
 cd ~
 
-rm -Rf dev-netsurf
-rm env.*
+[[ ${lmscli_optRemove} -ne 0 ]] &&
+ {
+    rm -Rf dev-netsurf
+    rm env.*
+ }
 
 lmsconDisplay "###########################"
 lmsconDisplay "#"

@@ -4,6 +4,18 @@
 **Pre-built Docker images are available from [ewsdocker/debian-netsurf-packager](https://hub.docker.com/r/ewsdocker/debian-netsurf-packager).**  
 
 ____  
+#### Overview  
+**ewsdocker/debian-netsurf-packager** implements the build script for the 
+[NetSurf](http://www.netsurf-browser.org/) browser for Linux, with the GTK 
+[NetSurf](http://www.netsurf-browser.org/) front-end, to create a <b>Debian 9</b>-based [NetSurf](http://www.netsurf-browser.org/) browser.  
+
+The NetSurf browser <b>must</b> be compiled from original source in order to use it.  This provides a challenge for many whose only desire is to experiment with the browser, not learn how to build it. Creating an installation package for a given OS release can be very time consuming, especially if the product must be supported over a range of releases. is compiled for use on a Debian-based (v 9.5+) operation system by:  
+1. Downloading the provided b
+The compiled application binary and support libraries are packaged in a tar-ed, gzip-ed archive, which is used to create a Debian-based installation package (<b>.deb</b>) file. 
+
+The **ewsdocker/debian-netsurf-packager** downloads the latest build script for the Open Source [NetSurf](http://www.netsurf-browser.org/) browser for <b>Debian</b> platform, compiles and builds the latest NetSurf browser and packages the resultant binary and required libraries into a tarball, which is then converted to a Debian package for installation in a Debian 9 operating system or container os.  
+
+____  
 #### NOTE  
 **ewsdocker/debian-netsurf-packager** is designed to be used on a Linux system configured to support **Docker user namespaces** .  Refer to [ewsdocker Containers and Docker User Namespaces](https://github.com/ewsdocker/ewsdocker.github.io/wiki/UserNS-Overview) for an overview and information on running **ewsdocker/debian-netsurf-packager** on a system not configured for **Docker user namespaces**.
 ____  
