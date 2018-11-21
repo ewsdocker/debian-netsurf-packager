@@ -9,7 +9,7 @@ ____
 [NetSurf](http://www.netsurf-browser.org/) browser for Linux, with the GTK 
 [NetSurf](http://www.netsurf-browser.org/) front-end, to create a <b>Debian 9</b>-based [NetSurf](http://www.netsurf-browser.org/) browser.  
 
-The NetSurf browser <b>must</b> be compiled from original source in order to use it.  This provides a challenge for many whose only desire is to experiment with the browser, not learn how to build it. Creating an installation package for a given OS release can be very time consuming, especially if the product must be supported over a range of releases. is compiled for use on a Debian-based (v 9.5+) operation system by:  
+The NetSurf browser <b>must</b> be compiled from original source in order to use it.  This provides a challenge for many whose only desire is to experiment with the browser, not learn how to build it. Creating an installation package for a given OS release can be very time consuming, especially if the product must be supported over a range of releases. is compiled for use on a Debian-based (v 9.5+) operating system by:  
 1. Downloading the provided b
 The compiled application binary and support libraries are packaged in a tar-ed, gzip-ed archive, which is used to create a Debian-based installation package (<b>.deb</b>) file. 
 
