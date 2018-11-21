@@ -42,9 +42,6 @@
 docker run -it \
            --rm \
            -v /etc/localtime:/etc/localtime:ro \
-           -e DISPLAY=unix${DISPLAY} \
-           -v /tmp/.X11-unix:/tmp/.X11-unix \
-           -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
            --mount source=pkgcache,target=/pkg-repo \
            -v ${HOME}/workspace-debian-netsurf-packager-9.5.3:/workspace \
            -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.3:/root \

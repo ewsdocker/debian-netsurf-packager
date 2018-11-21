@@ -58,7 +58,7 @@ declare nsRepo="/pkg-repo"
 declare nsArchName="netsurf-${NETSURF_VERS}-${NETSURF_BUILD}-deb-gtk-x86_64.tar.gz"
 declare nsArchive="${nsRepo}/${nsArchName}"
 
-declare nsEnv="${nsRepo}/env.sh"
+declare nsEnv="./env.sh"
 
 declare wsRoot="${HOME}"
 declare wsPath="${wsRoot}/dev-netsurf/workspace"
@@ -121,8 +121,8 @@ cd ~
 
 [[ ${lmscli_optRemove} -ne 0 ]] &&
  {
-    rm -Rf dev-netsurf
-    rm env.*
+    rm -Rf ./dev-netsurf
+    rm ./env.* 2>/dev/null
  }
 
 lmsconDisplay "###########################"

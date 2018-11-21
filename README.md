@@ -25,7 +25,7 @@ ____
 
 #### Installing ewsdocker/debian-netsurf-packager  
 
-The following scripts will download the selected **ewsdocker/debian-netsurf-packager** image, create a container, setup and populate the directory structures, create the run-time scripts, and install the application's desktop file(s).  
+The following scripts will download the selected **ewsdocker/debian-netsurf-packager** image, create a container, setup and populate the directory structures and create the run-time scripts.  
 
 The _default_ values will install all directories and contents in the **docker host** user's home directory (refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping)),  
 
@@ -63,7 +63,6 @@ ____
 After running the above command script, and using the settings indicated, the docker host directories, mapped as shown in the above tables, will be configured as follows:
 
 + the executable scripts have been copied to **~/bin**;  
-+ the application desktop file(s) have been copied to **~/.local/share/applications**, and are availablie in any _task bar_ menu;  
 + the associated **debian-netsurf-packager-"version"** execution script(s) (shown below) will be found in **~/.local/bin**, and _should_ be customized with proper local volume names.  
 
 ____  
@@ -72,14 +71,12 @@ ____
     docker run -it \
                --rm \
                -v /etc/localtime:/etc/localtime:ro \
-               -e DISPLAY=unix${DISPLAY} \
-               -v /tmp/.X11-unix:/tmp/.X11-unix \
-               -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
                -v ${HOME}/pkg-repo:/pkg-repo \
                -v ${HOME}/workspace-debian-netsurf-packager-latest:/workspace \
                -v ${HOME}/.config/docker/debian-netsurf-packager-latest:/root \
                -e LMSOPT_QUIET=0 \
                -e LMSOPT_DEBUG=0 \
+               -e LMSOPT_REMOTE=1 \
                --name=debian-netsurf-packager-latest \
            ewsdocker/debian-netsurf-packager:latest  
 
@@ -89,14 +86,12 @@ ____
     docker run -it \
                --rm \
                -v /etc/localtime:/etc/localtime:ro \
-               -e DISPLAY=unix${DISPLAY} \
-               -v /tmp/.X11-unix:/tmp/.X11-unix \
-               -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
                -v ${HOME}/pkg-repo:/pkg-repo \
                -v ${HOME}/workspace-debian-netsurf-packager-9.5.3:/workspace \
                -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.3:/root \
                -e LMSOPT_QUIET=0 \
                -e LMSOPT_DEBUG=0 \
+               -e LMSOPT_REMOTE=1 \
                --name=debian-netsurf-packager-9.5.3 \
            ewsdocker/debian-netsurf-packager:9.5.3  
 
@@ -135,9 +130,6 @@ To create and run the container, the following should work from the command-line
 or,  
 
     docker run -v /etc/localtime:/etc/localtime:ro \
-           -e DISPLAY=unix${DISPLAY} \
-           -v /tmp/.X11-unix:/tmp/.X11-unix \
-           -v ${HOME}/.Xauthority:${HOME}/.Xauthority \
            -v ${HOME}/public_html:/html-source \
            -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.4:/root \
            --name=debian-netsurf-packager-9.5.4 \

@@ -82,6 +82,8 @@ function nsLoadScript()
 	 	return 1
 	 }
 	
+    # =====================================================================
+
 	wget "${scriptUrl}"
     [[ $? -eq 0 ]] || 
      {
@@ -90,12 +92,11 @@ function nsLoadScript()
      	return 2
      }
 
-    while read buffer
-    do 
+    # =====================================================================
 
-    	echo ${buffer//apt-get install/apt-get -y install}
+	sed -i -e 's/apt-get install/apt-get -y install/g' ./env.sh
 
-    done < ./env.sh > "${scriptEnv}"
+    # =====================================================================
 
 	unset HOST
 
@@ -119,6 +120,8 @@ function nsBuildApp()
 {
 	lmsconDisplay_Debug "nsBuildApp = \"${1}\" \"${2}\""
 
+    # =====================================================================
+
 	local loaderPath="${1}"
 	local ws="${2}"
 	
@@ -129,41 +132,67 @@ function nsBuildApp()
 	 	return 1
 	 }
 
+    # =====================================================================
+
 	lmsconDisplay_Debug "source loaderPath"
 
 	source "${loaderPath}"
+
+    # =====================================================================
 
 	lmsconDisplay_Debug "calling ns-package-install"
 
 	ns-package-install -y
 
+    # =====================================================================
+
 	lmsconDisplay_Debug "source env.sh"
 
 	source ./env.sh
+
+    # =====================================================================
+
+	lmsconDisplay_Debug "calling ns-package-install"
+
+	ns-package-install -y
+
+    # =====================================================================
 
 	lmsconDisplay_Debug "calling source ns-clone"
 
 	ns-clone
 
+    # =====================================================================
+
 	lmsconDisplay_Debug "calling ns-pull-install"
 
 	ns-pull-install
+
+    # =====================================================================
 
 	lmsconDisplay_Debug "remove env.sh, PWD = $PWD"
 
 	rm ./env.sh
 
+    # =====================================================================
+
 	lmsconDisplay_Debug "nsBuildApp: cd = ${ws}, PWD = $PWD"
 
 	cd "${ws}"
+
+    # =====================================================================
 
 	lmsconDisplay_Debug "source env.sh"
 
 	source ./env.sh
 
+    # =====================================================================
+
 	lmsconDisplay_Debug "cd netsurf, PWD = $PWD"
 
  	cd netsurf
+
+    # =====================================================================
 
 	lmsconDisplay_Debug "make"
 
@@ -174,6 +203,8 @@ function nsBuildApp()
 		lmsconDisplay "nsBuildApp ERROR: make failed."
 	 	return 2
 	 }
+
+    # =====================================================================
 
 	lmsconDisplay_Debug "nsBuildApp complete"
 
