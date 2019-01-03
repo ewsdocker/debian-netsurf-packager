@@ -11,15 +11,15 @@
 # =========================================================================
 #
 # @author Jay Wheeler.
-# @version 9.5.2
-# @copyright © 2018. EarthWalk Software.
+# @version 9.6.0
+# @copyright © 2018, 2019. EarthWalk Software.
 # @license Licensed under the GNU General Public License, GPL-3.0-or-later.
 # @package ewsdocker/debian-netsurf
 # @subpackage Dockerfile
 #
 # =========================================================================
 #
-#	Copyright © 2018. EarthWalk Software
+#	Copyright © 2018, 2019. EarthWalk Software
 #	Licensed under the GNU General Public License, GPL-3.0-or-later.
 #
 #   This file is part of ewsdocker/debian-netsurf.

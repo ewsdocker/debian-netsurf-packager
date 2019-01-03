@@ -8,15 +8,15 @@
 # =========================================================================
 #
 # @author Jay Wheeler.
-# @version 9.5.4
-# @copyright © 2018. EarthWalk Software.
+# @version 9.6.0
+# @copyright © 2018, 2019. EarthWalk Software.
 # @license Licensed under the GNU General Public License, GPL-3.0-or-later.
 # @package ewsdocker/debian-netsurf-packager
 # @subpackage Dockerfile
 #
 # =========================================================================
 #
-#	Copyright © 2018. EarthWalk Software
+#	Copyright © 2018, 2019. EarthWalk Software
 #	Licensed under the GNU General Public License, GPL-3.0-or-later.
 #
 #   This file is part of ewsdocker/debian-netsurf-packager.
@@ -37,7 +37,7 @@
 #
 # =========================================================================
 # =========================================================================
-FROM ewsdocker/debian-base:9.5.6
+FROM ewsdocker/debian-base:9.6.0
 
 MAINTAINER Jay Wheeler <earthwalksoftware@gmail.com>
 
@@ -50,13 +50,13 @@ ENV NETSURF_BUILD=1
 
 # =========================================================================
 
-ENV LMSBUILD_VERSION="9.5.4" 
+ENV LMSBUILD_VERSION="9.6.0" 
 
 ENV LMSBUILD_NAME=debian-netsurf-packager 
 ENV LMSBUILD_REPO=ewsdocker 
 ENV LMSBUILD_REGISTRY="" 
 
-ENV LMSBUILD_PARENT="debian-base:9.5.6"
+ENV LMSBUILD_PARENT="debian-base:9.6.0"
 
 ENV LMSBUILD_DOCKER="${LMSBUILD_REPO}/${LMSBUILD_NAME}:${LMSBUILD_VERSION}" 
 ENV LMSBUILD_PACKAGE="${LMSBUILD_PARENT}, NetSurf ${NETSURF_VERS}, Build #${NETSURF_BUILD}"
@@ -81,8 +81,8 @@ RUN apt-get -y update \
                libpng-dev \
                librsvg2-dev \
                make \
- && printf "${LMSBUILD_DOCKER} (${LMSBUILD_PACKAGE}), %s @ %s\n" `date '+%Y-%m-%d'` `date '+%H:%M:%S'` >> /etc/ewsdocker-builds.txt \ 
- && apt-get clean 
+ && apt-get clean all \
+ && printf "${LMSBUILD_DOCKER} (${LMSBUILD_PACKAGE}), %s @ %s\n" `date '+%Y-%m-%d'` `date '+%H:%M:%S'` >> /etc/ewsdocker-builds.txt 
 
 # =========================================================================
 

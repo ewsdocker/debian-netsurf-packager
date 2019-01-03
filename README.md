@@ -1,4 +1,4 @@
-## ewsdocker/debian-netsurf-packager:9.5.3  
+## ewsdocker/debian-netsurf-packager:9.6.0  
 **A NetSurf Internet browser packager for Debian in a Docker image.**  
 
 **Pre-built Docker images are available from [ewsdocker/debian-netsurf-packager](https://hub.docker.com/r/ewsdocker/debian-netsurf-packager).**  
@@ -43,16 +43,16 @@ ____
            ewsdocker/debian-netsurf-packager:latest lms-setup  
 
 ____  
-**ewsdocker/debian-netsurf-packager:9.5.3**  
+**ewsdocker/debian-netsurf-packager:9.6.0**  
   
     docker run --rm \
                -v ${HOME}/bin:/userbin \
                -v ${HOME}/.local:/usrlocal \
                -e LMS_BASE="${HOME}/.local" \
                -v ${HOME}/.config/docker:/conf \
-               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.3:/root \
-               --name=debian-netsurf-packager-9.5.3 \
-           ewsdocker/debian-netsurf-packager:9.5.3 lms-setup  
+               -v ${HOME}/.config/docker/debian-netsurf-packager-9.6.0:/root \
+               --name=debian-netsurf-packager-9.6.0 \
+           ewsdocker/debian-netsurf-packager:9.6.0 lms-setup  
 
 ____  
 Refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping) for a discussion of **lms-setup** and what it does.  
@@ -81,19 +81,19 @@ ____
            ewsdocker/debian-netsurf-packager:latest  
 
 ____  
-**ewsdocker/debian-netsurf-packager:9.5.3**
+**ewsdocker/debian-netsurf-packager:9.6.0**
   
     docker run -it \
                --rm \
                -v /etc/localtime:/etc/localtime:ro \
                -v ${HOME}/pkg-repo:/pkg-repo \
-               -v ${HOME}/workspace-debian-netsurf-packager-9.5.3:/workspace \
-               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.3:/root \
+               -v ${HOME}/workspace-debian-netsurf-packager-9.6.0:/workspace \
+               -v ${HOME}/.config/docker/debian-netsurf-packager-9.6.0:/root \
                -e LMSOPT_QUIET=0 \
                -e LMSOPT_DEBUG=0 \
                -e LMSOPT_REMOTE=1 \
-               --name=debian-netsurf-packager-9.5.3 \
-           ewsdocker/debian-netsurf-packager:9.5.3  
+               --name=debian-netsurf-packager-9.6.0 \
+           ewsdocker/debian-netsurf-packager:9.6.0  
 
 ____  
 Refer to [Mapping docker host resources to the docker container](https://github.com/ewsdocker/debian-netsurf-packager/wiki/QuickStart#mapping) for a discussion of customizing the executable scripts..  
@@ -106,18 +106,18 @@ For the very brave, if an _edge_ tag is available, these instructions will downl
 ____  
 **ewsdocker/debian-netsurf-packager:edge**  
 
-**edge** is the development tag for the **9.5.4** release tag.
+**edge** is the development tag for the **9.6.1** release tag.
 
     docker pull ewsdocker/debian-netsurf-packager:edge
-    docker tag ewsdocker/debian-netsurf-packager:edge ewsdocker/debian-netsurf-packager:9.5.4
+    docker tag ewsdocker/debian-netsurf-packager:edge ewsdocker/debian-netsurf-packager:9.6.1
     docker run --rm \
                -v ${HOME}/bin:/userbin \
                -v ${HOME}/.local:/usrlocal \
                -e LMS_BASE="${HOME}/.local" \
                -v ${HOME}/.config/docker:/conf \
-               -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.4:/root \
-               --name=debian-netsurf-packager-9.5.4 \
-           ewsdocker/debian-netsurf-packager:9.5.4 lms-setup  
+               -v ${HOME}/.config/docker/debian-netsurf-packager-9.6.1:/root \
+               --name=debian-netsurf-packager-9.6.1 \
+           ewsdocker/debian-netsurf-packager:9.6.1 lms-setup  
 
 optional step:
 
@@ -125,15 +125,15 @@ optional step:
 
 To create and run the container, the following should work from the command-line, 
 
-    ~/.local/bin/debian-netsurf-packager-9.5.4  
+    ~/.local/bin/debian-netsurf-packager-9.6.1  
 
 or,  
 
     docker run -v /etc/localtime:/etc/localtime:ro \
            -v ${HOME}/public_html:/html-source \
-           -v ${HOME}/.config/docker/debian-netsurf-packager-9.5.4:/root \
-           --name=debian-netsurf-packager-9.5.4 \
-       ewsdocker/debian-netsurf-packager:9.5.4    
+           -v ${HOME}/.config/docker/debian-netsurf-packager-9.6.1:/root \
+           --name=debian-netsurf-packager-9.6.1 \
+       ewsdocker/debian-netsurf-packager:9.6.1    
 
 ____  
 #### Persistence  
@@ -150,7 +150,7 @@ It is important to keep the time and date on docker _host_ files that have been 
     -v /etc/localtime:/etc/localtime:ro  
 
 ____  
-**Copyright © 2018. EarthWalk Software.**  
+**Copyright © 2018, 2019. EarthWalk Software.**  
 **Licensed under the GNU General Public License, GPL-3.0-or-later.**  
 
 This file is part of **ewsdocker/debian-netsurf-packager**.  
