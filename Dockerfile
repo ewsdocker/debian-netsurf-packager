@@ -90,9 +90,9 @@ COPY scripts/. /
 
 RUN chmod -R +x /usr/local/bin/* \
  && chmod +x /usr/bin/lms/netsurf-build.sh \
- && ln -s /usr/bin/lms/netsurf-build.sh /usr/bin/lms-buildns \
  && chmod 644 /usr/local/share/applications/${LMSBUILD_NAME}-${LMSBUILD_VERSION}.desktop \
- && chmod 644 /usr/local/share/applications/${LMSBUILD_NAME}.desktop
+ && chmod 644 /usr/local/share/applications/${LMSBUILD_NAME}.desktop \
+ && ln -s /usr/bin/lms/netsurf-build.sh /usr/bin/lms-buildns 
 
 # =========================================================================
 
