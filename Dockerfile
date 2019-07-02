@@ -2,7 +2,7 @@
 # =========================================================================
 #
 #	Dockerfile
-#	  Dockerfile for ewsdocker/debian-netsurf-packager-packager in a 
+#	  Dockerfile for ewsdocker/debian-netsurf-packager in a 
 #		Debian docker container.
 #
 # =========================================================================
